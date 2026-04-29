@@ -14,8 +14,6 @@ from datetime import datetime, timedelta
 tipo_dou = "DO1 DO1E"
 
 palavras = [
-    "ANVISA",
-    "GLAXOSMITHKLINE"
 ]
 
 total_encontrados = 0
