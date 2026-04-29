@@ -309,33 +309,6 @@ class App(tk.Tk):
             highlightcolor=CORES["accent"],
         )
         self.text_palavras.insert("1.0",
-                                  "GLAXOSMITHKLINE\n"
-                                  "RESOLUÇÃO GECEX\n"
-                                  "OPERADOR ECONÔMICO AUTORIZADO\n"
-                                  "OEA\n"
-                                  "MANUAL\n"
-                                  "ANVISA\n"
-                                  "RESOLUÇÃO DE DIRETORIA COLEGIADA\n"
-                                  "RDC Nº\n"
-                                  "RDC Nº 81\n"
-                                  "GCPAF\n"
-                                  "MANUAL ANVISA DE IMPORTAÇÃO POR DUIMP\n"
-                                  "MANUAL ANVISA\n"
-                                  "DUIMP\n"
-                                  "NOVO PROCESSO DE IMPORTAÇÃO\n"
-                                  "NPI\n"
-                                  "TFVS\n"
-                                  "VIGILÂNCIA SANITÁRIA\n"
-                                  "PCCE\n"
-                                  "LPCO\n"
-                                  "ATRIBUTO\n"
-                                  "ATRIBUTOS\n"
-                                  "CATÁLOGO DE PRODUTOS\n"
-                                  "OPERADOR ESTRANGEIRO\n"
-                                  "OPERADORES ESTRANGEIROS\n"
-                                  "SNVS\n"
-                                  "MERCOSUL\n"
-                                  "PRESIDÊNCIA DA REPÚBLICA\n"
                                   )
         self.text_palavras.pack(fill="x", padx=20, pady=(4, 16))
 
