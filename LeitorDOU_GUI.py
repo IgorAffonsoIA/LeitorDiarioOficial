@@ -164,7 +164,7 @@ def _analisar_xml(xml_data, palavras, callback_resultado, callback_log):
     return encontrados
 
 
-# ─── Interface ────────────────────────────────────────────────────────────────
+#Interface
 
 class App(tk.Tk):
     def __init__(self):
@@ -181,7 +181,7 @@ class App(tk.Tk):
         self._build_fonts()
         self._build_layout()
 
-    # ── Fontes ──────────────────────────────────────────────────────────────
+    #Fontes
 
     def _build_fonts(self):
         self.font_title   = tkFont.Font(family="Segoe UI", size=15, weight="bold")
@@ -192,7 +192,7 @@ class App(tk.Tk):
         self.font_meta_lbl= tkFont.Font(family="Segoe UI", size=7, weight="bold")
         self.font_meta_val= tkFont.Font(family="Segoe UI", size=9)
 
-    # ── Layout principal ─────────────────────────────────────────────────────
+    #Layout principal
 
     def _build_layout(self):
         self.sidebar = tk.Frame(self, bg=CORES["sidebar"], width=300)
@@ -205,7 +205,7 @@ class App(tk.Tk):
         self._build_sidebar()
         self._build_content()
 
-    # ── Sidebar ──────────────────────────────────────────────────────────────
+    #Sidebar
 
     def _build_sidebar(self):
         pad = {"padx": 20}
@@ -233,7 +233,7 @@ class App(tk.Tk):
 
         self._separator(self.sidebar)
 
-        # Credenciais
+        #Credenciais
         self._section_label(self.sidebar, "CREDENCIAIS")
         self._field_label(self.sidebar, "E-mail INLABS")
         self.entry_email = self._entry(self.sidebar)
@@ -245,10 +245,10 @@ class App(tk.Tk):
 
         self._separator(self.sidebar)
 
-        # Parâmetros
+        #Parâmetros
         self._section_label(self.sidebar, "PARÂMETROS")
 
-        # Linha De / Até lado a lado
+        #Linha
         row_datas = tk.Frame(self.sidebar, bg=CORES["sidebar"])
         row_datas.pack(fill="x", padx=20, pady=(0, 10))
 
@@ -291,7 +291,7 @@ class App(tk.Tk):
 
         self._separator(self.sidebar)
 
-        # Palavras-chave
+        #Palavras-chave
         self._section_label(self.sidebar, "PALAVRAS-CHAVE")
         tk.Label(
             self.sidebar, text="Uma por linha",
@@ -339,7 +339,7 @@ class App(tk.Tk):
                                   )
         self.text_palavras.pack(fill="x", padx=20, pady=(4, 16))
 
-        # Botão principal
+        #Botão principal
         self.btn_buscar = tk.Button(
             self.sidebar,
             text="▶  Iniciar Busca",
@@ -352,7 +352,7 @@ class App(tk.Tk):
         )
         self.btn_buscar.pack(fill="x", padx=20, pady=(0, 16))
 
-    # ── Conteúdo (abas) ──────────────────────────────────────────────────────
+    #Conteúdo
 
     def _build_content(self):
         top = tk.Frame(self.content, bg=CORES["bg"], height=48)
@@ -434,7 +434,7 @@ class App(tk.Tk):
         self.tree.tag_configure("impar", background="#19202E")
         self.tree.bind("<<TreeviewSelect>>", self._on_select)
 
-        # ── Painel de detalhe ────────────────────────────────────────────────
+        #Painel de detalhe
         self.frame_detalhe = tk.Frame(
             self.frame_resultados, bg=CORES["sidebar"], height=350
         )
@@ -444,13 +444,13 @@ class App(tk.Tk):
         # Borda superior de destaque
         tk.Frame(self.frame_detalhe, bg=CORES["border"], height=1).pack(fill="x")
 
-        # Cabeçalho
+        #Cabeçalho
         tk.Label(
             self.frame_detalhe, text="DETALHES DA OCORRÊNCIA",
             font=self.font_section, fg=CORES["accent"], bg=CORES["sidebar"],
         ).pack(anchor="w", padx=16, pady=(8, 6))
 
-        # ── Linha 1 de metadados: Data | Palavra | Seção | Página ────────────
+        #Linha 1 de metadados: Data | Palavra | Seção | Página
         row1 = tk.Frame(self.frame_detalhe, bg=CORES["sidebar"])
         row1.pack(fill="x", padx=16, pady=(0, 4))
 
@@ -459,24 +459,24 @@ class App(tk.Tk):
         self._lbl_meta_secao   = self._meta_field(row1, "SEÇÃO",   "—")
         self._lbl_meta_pagina  = self._meta_field(row1, "PÁGINA",  "—")
 
-        # ── Linha 2 de metadados: Órgão ──────────────────────────────────────
+        #Linha 2 de metadados: Órgão
         row2 = tk.Frame(self.frame_detalhe, bg=CORES["sidebar"])
         row2.pack(fill="x", padx=16, pady=(0, 4))
 
         self._lbl_meta_orgao = self._meta_field(row2, "ÓRGÃO", "—", expand=True)
 
-        # ── Linha 3 de metadados: Título ─────────────────────────────────────
+        #Linha 3 de metadados: Título
         row3 = tk.Frame(self.frame_detalhe, bg=CORES["sidebar"])
         row3.pack(fill="x", padx=16, pady=(0, 6))
 
         self._lbl_meta_titulo = self._meta_field(row3, "TÍTULO", "—", expand=True)
 
-        # Separador
+        #Separador
         tk.Frame(self.frame_detalhe, bg=CORES["border"], height=1).pack(
             fill="x", padx=16, pady=(0, 6)
         )
 
-        # Label TRECHO
+        #Label TRECHO
         tk.Label(
             self.frame_detalhe, text="TRECHO",
             font=self.font_section, fg=CORES["text_muted"], bg=CORES["sidebar"],
@@ -502,7 +502,7 @@ class App(tk.Tk):
             lambda e: self.txt_trecho.configure(cursor=""))
         self.txt_trecho.tag_bind("link", "<Button-1>", self._abrir_link)
 
-    # ── Helper para campo de metadado ────────────────────────────────────────
+    #Helper para campo de metadado
 
     def _meta_field(self, parent, label, valor_inicial, expand=False):
         """Cria um bloco label+valor inline. Retorna o Label de valor."""
@@ -543,7 +543,7 @@ class App(tk.Tk):
         self.txt_log.tag_configure("danger",  foreground=CORES["danger"])
         self.txt_log.tag_configure("muted",   foreground=CORES["text_muted"])
 
-    # ── Helpers de UI ────────────────────────────────────────────────────────
+    #Helpers de UI
 
     def _entry(self, parent, **kw):
         return tk.Entry(
@@ -575,8 +575,7 @@ class App(tk.Tk):
             font=self.font_small, fg=CORES["text_muted"], bg=CORES["sidebar"],
         ).pack(anchor="w", padx=20)
 
-    # ── Ações ────────────────────────────────────────────────────────────────
-
+    #Ações
     def _iniciar_busca(self):
         email        = self.entry_email.get().strip()
         senha        = self.entry_senha.get().strip()
@@ -683,8 +682,7 @@ class App(tk.Tk):
         self.txt_trecho.delete("1.0", "end")
         self.txt_trecho.configure(state="disabled")
 
-    # ── Callbacks (thread-safe via after) ────────────────────────────────────
-
+    #Callbacks (thread-safe via after)
     def _log(self, msg, tag="text"):
         def _do():
             self.txt_log.configure(state="normal")
@@ -742,7 +740,7 @@ class App(tk.Tk):
             return
         r = self.resultados[idx]
 
-        # ── Atualiza metadados ───────────────────────────────────────────────
+        #Atualiza metadados
         self._lbl_meta_data.configure(text=r["pub_date"])
         self._lbl_meta_palavra.configure(text=r["palavra"])
         self._lbl_meta_secao.configure(text=r["secao"])
@@ -750,7 +748,7 @@ class App(tk.Tk):
         self._lbl_meta_orgao.configure(text=r["orgao_raw"])
         self._lbl_meta_titulo.configure(text=r["titulo"])
 
-        # ── Atualiza trecho ──────────────────────────────────────────────────
+        #Atualiza trecho
         self.txt_trecho.configure(state="normal")
         self.txt_trecho.delete("1.0", "end")
 
@@ -778,7 +776,7 @@ class App(tk.Tk):
                 webbrowser.open(url.strip())
 
 
-# ─── Entry-point ──────────────────────────────────────────────────────────────
+#Main
 
 if __name__ == "__main__":
     app = App()
